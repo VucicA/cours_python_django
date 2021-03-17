@@ -71,11 +71,5 @@ class Student(models.Model):
     on_delete=models.CASCADE, # necessaire selon la version de Django
     null=True
   )
-
-
-
-
-
-
-
-
+  def __str__(self):
+    return self.email
