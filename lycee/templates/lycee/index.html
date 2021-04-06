@@ -1,9 +1,23 @@
+{% extends 'master.html' %}
+{% load static %}
 {% if liste %}
-  <ul>
-    {% for cursus in liste %}
-      <li><a href='{{cursus.id}}'>{{cursus.name}}</a></li>
-    {% endfor %}
-  </ul>
+  {% block title %}
+    <h2>List of programs</h2>
+  {% endblock %}
+  {% block content %}
+    <div class='container'>
+      {% for cursus in liste %}
+        <div class="row">
+          <div class = "col-sm-2">
+              <a href={% url 'detail_cursus' cursus.id %}>{{cursus.name}}</a>
+          </div>
+        </div>
+      {% endfor %}
+      <div>
+        <a href={% url 'create_student' %}><button class='button radius btn btn-primary left' type='cancel'>Create a student</button></a>
+      </div>
+    </div>
+  {% endblock %}
 {% else %}
   <p> No cursus to show</p>
 {% endif %}
