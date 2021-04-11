@@ -7,15 +7,20 @@
   {% block content %}
     <div class='container'>
       <div class="row">
-        <div class = "col-sm-4">
+        <div class = "col-sm-3">
           <h3>{{liste.first_name}} {{liste.last_name}}</h3>
-          {{liste.birth_date}}<br>
-          {{liste.phone}}<br>
-          {{liste.email}}<br>
-          {{liste.cursus.name}}<br>
-          {{liste.comments}}<br>
         </div>
-      </div>    
+        <div class = "col-sm-4">
+          <ul>
+            <li>{{liste.birth_date}}</li>
+            <li>{{liste.phone}}</li>
+            <li>{{liste.email}}</li>
+            <li>{{liste.cursus.name}} {{liste.cursus.scholar_year}}</li>
+          </ul>
+        </div>
+      </div>  
+      <a href={% url 'call_list_student' liste.id %}><button class='button radius btn btn-primary left'>View absence</button></a> 
+      <a href={% url 'edit_student' liste.id %}><button class='button radius btn btn-primary left'>Edit student data</button></a> 
     </div>
   {% endblock %}
 {% else %}

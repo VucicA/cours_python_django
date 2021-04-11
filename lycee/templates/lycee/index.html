@@ -9,12 +9,20 @@
       {% for cursus in liste %}
         <div class="row">
           <div class = "col-sm-2">
-              <a href={% url 'detail_cursus' cursus.id %}>{{cursus.name}}</a>
+            <a href={% url 'detail_cursus' cursus.id %}>{{cursus.name}}</a>
           </div>
+          <div class = "col-sm-4">
+            <a href={% url 'call_of_roll' cursus.id %}><button class='button radius btn btn-info left'>Call of roll</button></a>
+            <a href={% url 'call_list_cursus' cursus.id %}><button class='button radius btn btn-warning left'>Call List</button></a>
+          </div>
+          
         </div>
       {% endfor %}
       <div>
-        <a href={% url 'create_student' %}><button class='button radius btn btn-primary left' type='cancel'>Create a student</button></a>
+        <a href={% url 'particular_call_of_roll' %}><button class='button radius btn btn-primary left'>Particular call of roll</button></a>
+      </div>
+      <div>
+        <a href={% url 'create_student' %}><button class='button radius btn btn-primary left'>Create a student</button></a>
       </div>
     </div>
   {% endblock %}

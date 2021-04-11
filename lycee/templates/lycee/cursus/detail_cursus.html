@@ -2,7 +2,7 @@
 {% load static %}
 {% if liste %}
   {% block title %}
-    <h2>Detail of {{cursus.name}}</h2>
+    <h2>{{cursus.name}} {{cursus.scholar_year}}</h2>
   {% endblock %}
   {% block content %}
     <ul>
@@ -10,7 +10,8 @@
         <div class='container'>
           <div class = "col-sm-12">
               <li>
-                <a href={% url 'detail_student' student.id %}>{{student.last_name}} {{student.first_name}}</li>
+                <a href={% url 'detail_student' student.id %}>{{student.last_name}} {{student.first_name}}
+              </li>
           </div>
         </div>    
       {% endfor %}
@@ -19,12 +20,3 @@
 {% else %}
   <p> No student to show</p>
 {% endif %}
-
-
-
-        <div class="row">
-          <div class = "col-sm-2">
-              <a href={% url 'detail_cursus' cursus.id %}>{{cursus.name}}</a>
-          </div>
-        </div>
-      

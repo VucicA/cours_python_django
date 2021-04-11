@@ -1,0 +1,25 @@
+{% extends 'master.html' %}
+{% load static %}
+{% if liste %}
+  {% block title %}
+    <h2>Absence of {{student.first_name}} {{student.last_name}}</h2>
+  {% endblock %}
+  {% block content %}
+    <div class='container'>
+      <div class="row">
+        <div class = "col-sm-6">
+          {% for absence in liste %}
+            {% if absence.reason %}
+              <p>Absence on {{absence.date}} for {{absence.reason}}</p>
+            {% else %}
+              <p>Absence on {{absence.date}}</p>
+            {% endif %}
+          {% endfor %}
+          <p>{{student.first_name}} {{student.last_name}} has {{count}} absences</p>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+{% else %}
+  <p> Nothing to show</p>
+{% endif %}

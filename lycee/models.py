@@ -21,7 +21,9 @@ class Cursus(models.Model):
     blank=False,
     null=True,
     default='0000-00001'
-  ) 
+  )
+  def str(self):
+    return'{} {}'.format (self.name,self.scholar_year)
 
 class Student(models.Model):
   first_name = models.CharField(
@@ -73,3 +75,31 @@ class Student(models.Model):
   )
   def __str__(self):
     return self.email
+
+class Absence(models.Model):
+  reason = models.CharField(
+    max_length = 50,
+    blank = False,
+    null = True
+  )
+  isMissing = models.BooleanField(
+    blank = False,
+    null = True
+  )
+  date = models.DateField(
+    blank = False,
+    default = "AAAA-MM-DD",
+    null = False
+  )
+  student = models.ForeignKey(
+    Student,
+    on_delete = models.CASCADE,
+    null = True
+  )
+  cursus = models.ForeignKey(
+    Cursus,
+    on_delete = models.CASCADE,
+    null = True
+  )
+  def __str__(self):
+    return'{} {}'.format (self.student,self.isMissing)
